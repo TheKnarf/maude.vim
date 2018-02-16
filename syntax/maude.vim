@@ -11,8 +11,6 @@ elseif exists("b:current_syntax")
   finish
 endif
 
-command! -nargs=+ MaudeHiLink hi def link <args>
-
 syn keyword maudeModule     mod fmod omod endm endfm endm is
 syn keyword maudeImports    protecting including extending
 syn keyword maudeSorts      sort sorts subsort subsorts
@@ -23,8 +21,6 @@ syn match   maudeComment    "\*\*\*.*"
 syn match   maudeComment    "---.*"
 syn match   maudeOps        "->"
 syn match   maudeOps        ":"
-"syn match   maudeOps        "^\s*subsorts[^<]*<"hs=e-1
-"syn match   maudeOps        "^\s*ceq[^=]*="
 syn match   maudeOps        "="
 syn match   maudeOps        "\.\s*$"
 
@@ -82,20 +78,17 @@ syn keyword maudeLiteral    true false
 syn match   maudeLiteral    "\<\(0[0-7]*\|0[xX]\x\+\|\d\+\)[lL]\=\>"
 syn match   maudeLiteral    "\(\<\d\+\.\d*\|\.\d\+\)\([eE][-+]\=\d\+\)\=[fFdD]\="
 
-MaudeHiLink maudeModule     PreProc
-MaudeHiLink maudeImports    PreProc
-MaudeHiLink maudeSorts      Type
-MaudeHiLink maudeStatements Keyword
-MaudeHiLink maudeModules    String
-MaudeHiLink maudeComment    Comment
-MaudeHiLink maudeOps        Special
-MaudeHiLink maudeCommands   Special
-MaudeHiLink maudeFlags      PreProc
-MaudeHiLink maudeSorts      Type
-MaudeHiLink maudeLiteral    String
-"hi def     maudeMisc       term=bold cterm=bold gui=bold
-
-delcommand MaudeHiLink
+hi def link maudeModule     PreProc
+hi def link maudeImports    PreProc
+hi def link maudeSorts      Type
+hi def link maudeStatements Keyword
+hi def link maudeModules    String
+hi def link maudeComment    Comment
+hi def link maudeOps        Special
+hi def link maudeCommands   Special
+hi def link maudeFlags      PreProc
+hi def link maudeSorts      Type
+hi def link maudeLiteral    String
   
 let b:current_syntax = "maude"
 
